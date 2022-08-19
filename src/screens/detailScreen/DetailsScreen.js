@@ -15,21 +15,24 @@ const DetailsScreen = () => {
         dispatch(getPosts())
     }, [])
 
+
+    const renderItem = ({ item, index }) => {
+        return (
+            <View style={Styles.subContainer}>
+                <Text>{item.id}  </Text>
+                <Text>{item.title}</Text>
+
+            </View>
+        )
+    }
+
     return (
         <View style={Styles.container}>
             <FlatList
 
                 data={posts}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item, index }) => {
-                    return (
-                        <View style={Styles.subContainer}>
-                            <Text>{item.id}  </Text>
-                            <Text>{item.title}</Text>
-
-                        </View>
-                    )
-                }}
+                renderItem={renderItem}
             />
         </View>
     )
